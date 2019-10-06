@@ -10,8 +10,10 @@
 namespace PHPUnit\Framework;
 
 use PHPUnit\Event\Dispatcher;
-use PHPUnit\Event\GenericEvent;
-use PHPUnit\Event\NamedType;
+use PHPUnit\Event\Test\AfterTest;
+use PHPUnit\Event\Test\BeforeTest;
+use PHPUnit\Event\TestSuite\AfterTestSuite;
+use PHPUnit\Event\TestSuite\BeforeTestSuite;
 use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\Filter\Factory;
 use PHPUnit\Runner\PhptTestCase;
@@ -517,7 +519,7 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
         $className   = $this->name;
         $hookMethods = TestUtil::getHookMethods($className);
 
-        $dispatcher->dispatch(new GenericEvent(new NamedType('test-suite-started')));
+        $dispatcher->dispatch(new BeforeTestSuite());
 
         $result->startTestSuite($this);
 
@@ -535,16 +537,16 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
             }
         } catch (SkippedTestSuiteError $error) {
             foreach ($this->tests() as $test) {
-                $dispatcher->dispatch(new GenericEvent(new NamedType('test-started')));
+                $dispatcher->dispatch(new BeforeTest());
 
                 $result->startTest($test);
                 $result->addFailure($test, $error, 0);
                 $result->endTest($test, 0);
 
-                $dispatcher->dispatch(new GenericEvent(new NamedType('test-ended')));
+                $dispatcher->dispatch(new AfterTest());
             }
 
-            $dispatcher->dispatch(new GenericEvent(new NamedType('test-suite-ended')));
+            $dispatcher->dispatch(new AfterTestSuite());
 
             $result->endTestSuite($this);
 
@@ -555,16 +557,16 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
                     break;
                 }
 
-                $dispatcher->dispatch(new GenericEvent(new NamedType('test-started')));
+                $dispatcher->dispatch(new BeforeTest());
 
                 $result->startTest($test);
                 $result->addError($test, $t, 0);
                 $result->endTest($test, 0);
 
-                $dispatcher->dispatch(new GenericEvent(new NamedType('test-ended')));
+                $dispatcher->dispatch(new AfterTest());
             }
 
-            $dispatcher->dispatch(new GenericEvent(new NamedType('test-suite-ended')));
+            $dispatcher->dispatch(new AfterTestSuite());
 
             $result->endTestSuite($this);
 
@@ -604,16 +606,16 @@ class TestSuite implements \IteratorAggregate, SelfDescribing, Test
             $placeholderTest = clone $test;
             $placeholderTest->setName($afterClassMethod);
 
-            $dispatcher->dispatch(new GenericEvent(new NamedType('test-started')));
+            $dispatcher->dispatch(new BeforeTest());
 
             $result->startTest($placeholderTest);
             $result->addFailure($placeholderTest, $error, 0);
             $result->endTest($placeholderTest, 0);
 
-            $dispatcher->dispatch(new GenericEvent(new NamedType('test-ended')));
+            $dispatcher->dispatch(new AfterTest());
         }
 
-        $dispatcher->dispatch(new GenericEvent(new NamedType('test-suite-ended')));
+        $dispatcher->dispatch(new AfterTestSuite());
 
         $result->endTestSuite($this);
 

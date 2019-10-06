@@ -1,4 +1,5 @@
 <?php
+use PHPUnit\Event\Dispatcher;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 
 if (!defined('STDOUT')) {
@@ -52,7 +53,12 @@ function __phpunit_run_isolated_test()
     $test->setInIsolation(TRUE);
 
     ob_end_clean();
-    $test->run($result);
+
+    $test->run(
+        new Dispatcher(),
+        $result
+    );
+
     $output = '';
     if (!$test->hasExpectationOnOutput()) {
         $output = $test->getActualOutput();

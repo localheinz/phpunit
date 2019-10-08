@@ -628,7 +628,7 @@ final class TestRunner extends BaseTestRunner
         }
 
         $dispatcher->dispatch(new Event\Test\AfterLastTest());
-        
+
         $result->flushListeners();
 
         if ($this->printer instanceof ResultPrinter) {

@@ -157,8 +157,12 @@ class Command
      */
     public static function main(bool $exit = true): int
     {
+        $dispatcher = new Event\Dispatcher();
+
+        $dispatcher->register(new Event\Subscriber\ConsolePrinter(new ResultPrinter()));
+
         return (new static)->run(
-            new Event\Dispatcher(),
+            $dispatcher,
             $_SERVER['argv'],
             $exit
         );

@@ -201,7 +201,7 @@ class Command
 
         unset($this->arguments['test'], $this->arguments['testFile']);
 
-        $dispatcher->dispatch(new Event\Run\BeforeRun());
+        $dispatcher->dispatch(new Event\Run\BeforeRun(new Event\Run\Run()));
 
         try {
             $result = $runner->doRun(
@@ -214,7 +214,7 @@ class Command
             print $e->getMessage() . \PHP_EOL;
         }
 
-        $dispatcher->dispatch(new Event\Run\AfterRun());
+        $dispatcher->dispatch(new Event\Run\AfterRun(new Event\Run\Run()));
 
         $return = TestRunner::FAILURE_EXIT;
 

@@ -24,6 +24,9 @@ final class ConsolePrinter implements Subscriber
 {
     private $printer;
 
+    private $numberOfTests = 0;
+    private $numberOfTestsRun = 0;
+
     public function __construct(Printer $printer)
     {
         $this->printer = $printer;

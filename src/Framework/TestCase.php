@@ -2090,7 +2090,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Skipped()
+        ));
     }
 
     private function markSkippedForMissingDependency(Event\Dispatcher $dispatcher, string $dependency): void
@@ -2114,7 +2117,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Skipped()
+        ));
     }
 
     private function warnAboutDependencyThatDoesNotExist(Event\Dispatcher $dispatcher, string $dependency): void
@@ -2138,7 +2144,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Warning()
+        ));
     }
 
     /**

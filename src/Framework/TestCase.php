@@ -555,8 +555,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     public function run(Event\Emitter $emitter, TestResult $result): void
     {
-        $emitter->testWasStarted();
-
         if (!$this instanceof ErrorTestCase && !$this instanceof WarningTestCase) {
             $this->result = $result;
         }
@@ -580,8 +578,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         }
 
         $this->result = null;
-
-        $emitter->testWasCompletedWithResultThatNeedsClarification();
     }
 
     /**
@@ -1657,8 +1653,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->status = TestStatus::skipped($message);
 
-        $emitter->testWasStarted();
-
         $this->result->startTest($this);
 
         $this->result->addFailure(
@@ -1668,8 +1662,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         $this->result->endTest($this, 0);
-
-        $emitter->testWasSkipped();
     }
 
     private function markSkippedForMissingDependency(Event\Emitter $emitter, ExecutionOrderDependency $dependency): void
@@ -1681,8 +1673,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->status = TestStatus::skipped($message);
 
-        $emitter->testWasStarted();
-
         $this->result->startTest($this);
 
         $this->result->addFailure(
@@ -1692,8 +1682,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         $this->result->endTest($this, 0);
-
-        $emitter->testWasSkipped();
     }
 
     private function markWarningForUncallableDependency(Event\Emitter $emitter, ExecutionOrderDependency $dependency): void
@@ -1705,8 +1693,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->status = TestStatus::warning($message);
 
-        $emitter->testWasStarted();
-
         $this->result->startTest($this);
 
         $this->result->addWarning(
@@ -1716,8 +1702,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         $this->result->endTest($this, 0);
-
-        $emitter->testWasCompletedWithWarning();
     }
 
     /**

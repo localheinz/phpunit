@@ -5,34 +5,8 @@
       <code>notify</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Event/Emitter.php">
-    <MissingThrowsDocblock occurrences="13">
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-      <code>dispatch</code>
-    </MissingThrowsDocblock>
-  </file>
   <file src="src/Event/Facade.php">
-    <MissingThrowsDocblock occurrences="10">
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
-      <code>addMapping</code>
+    <MissingThrowsDocblock occurrences="1">
       <code>addMapping</code>
     </MissingThrowsDocblock>
   </file>

@@ -37,7 +37,6 @@ use function stream_resolve_include_path;
 use function strpos;
 use function trim;
 use function version_compare;
-use PHPUnit\Event;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\Extension\PharLoader;
 use PHPUnit\Runner\TestSuiteLoader;
@@ -89,10 +88,8 @@ class Command
      */
     public static function main(bool $exit = true): int
     {
-        $facade = new Event\Facade();
-
         try {
-            return (new static)->run($facade->emitter(), $_SERVER['argv'], $exit);
+            return (new static)->run($_SERVER['argv'], $exit);
         } catch (Throwable $t) {
             throw new RuntimeException(
                 $t->getMessage(),
@@ -105,7 +102,7 @@ class Command
     /**
      * @throws Exception
      */
-    public function run(Event\Emitter $emitter, array $argv, bool $exit = true): int
+    public function run(array $argv, bool $exit = true): int
     {
         $this->handleArguments($argv);
 
@@ -139,7 +136,7 @@ class Command
         unset($this->arguments['test'], $this->arguments['testFile']);
 
         try {
-            $result = $runner->run($emitter, $suite, $this->arguments, $this->warnings, $exit);
+            $result = $runner->run($suite, $this->arguments, $this->warnings, $exit);
         } catch (Throwable $t) {
             print $t->getMessage() . PHP_EOL;
         }

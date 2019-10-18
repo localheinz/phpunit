@@ -28,7 +28,6 @@ use function strpos;
 use function substr;
 use Iterator;
 use IteratorAggregate;
-use PHPUnit\Event;
 use PHPUnit\Runner\Filter\Factory;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Util\Test as TestUtil;
@@ -405,7 +404,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
      * @throws CodeCoverageException
      * @throws Warning
      */
-    public function run(Event\Emitter $emitter, TestResult $result): void
+    public function run(TestResult $result): void
     {
         if (count($this) === 0) {
             return;
@@ -483,7 +482,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 $test->setRunTestInSeparateProcess($this->runTestInSeparateProcess);
             }
 
-            $test->run($emitter, $result);
+            $test->run($result);
         }
 
         if ($this->testCase && class_exists($this->name, false)) {

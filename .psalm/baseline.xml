@@ -96,9 +96,6 @@
     <MissingThrowsDocblock occurrences="1">
       <code>addMapping</code>
     </MissingThrowsDocblock>
-    <TooFewArguments occurrences="1">
-      <code>new Emitter(new Dispatcher($this-&gt;typeMap()))</code>
-    </TooFewArguments>
   </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">

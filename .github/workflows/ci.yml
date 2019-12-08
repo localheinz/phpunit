@@ -93,10 +93,14 @@ jobs:
   tests:
     name: Tests
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+
         php-version:
           - 7.2
           - 7.3
@@ -105,6 +109,9 @@ jobs:
         dependencies:
           - lowest
           - highest
+
+    env:
+      COMPOSER_CACHE_DIR: ~/.composer/cache
 
     steps:
       - name: Checkout
@@ -118,14 +125,14 @@ jobs:
           extensions: dom, json, libxml, mbstring, pdo_sqlite, soap, xml, xmlwriter
           ini-values: assert.exception=1, zend.assertions=1
 
-      - name: Determine composer cache directory
-        id: determine-composer-cache-directory
-        run: echo "::set-output name=directory::$(./tools/composer config cache-dir)"
+      - name: Configure composer cache directory environment variable on Windows
+        if: matrix.os == "windows-latest"
+        run: echo "::set-env name=COMPOSER_CACHE_DIR::~\AppData\Local\Composer"
 
       - name: Cache dependencies installed with composer
         uses: actions/cache@v1
         with:
-          path: ${{ steps.determine-composer-cache-directory.outputs.directory }}
+          path: ${{ env.COMPOSER_CACHE_DIR }}
           key: php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-

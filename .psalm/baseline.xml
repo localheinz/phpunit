@@ -51,6 +51,21 @@
       <code>dispatch</code>
     </MissingThrowsDocblock>
   </file>
+  <file src="src/Event/Registry.php">
+    <UndefinedClass occurrences="1">
+      <code>SystemClock</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Event/Telemetry/HRTime.php">
+    <MissingThrowsDocblock occurrences="1">
+      <code>new Duration($secondDuration, $nanoDuration)</code>
+    </MissingThrowsDocblock>
+  </file>
+  <file src="src/Event/Telemetry/SystemStopWatch.php">
+    <MissingThrowsDocblock occurrences="1">
+      <code>new HRTime(...hrtime(false))</code>
+    </MissingThrowsDocblock>
+  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>

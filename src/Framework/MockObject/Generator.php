@@ -708,23 +708,23 @@ final class Generator
             unset($interfaceMethods);
         }
 
-        $mockClassName = $this->generateClassName(
+        $generatedMockClassName = $this->generateClassName(
             $type,
             $mockClassName,
             'Mock_'
         );
 
-        if (\class_exists($mockClassName['fullClassName'], $callAutoload)) {
+        if (\class_exists($generatedMockClassName['fullClassName'], $callAutoload)) {
             $isClass = true;
-        } elseif (\interface_exists($mockClassName['fullClassName'], $callAutoload)) {
+        } elseif (\interface_exists($generatedMockClassName['fullClassName'], $callAutoload)) {
             $isInterface = true;
         }
 
         if (!$isClass && !$isInterface) {
-            $prologue = 'class ' . $mockClassName['originalClassName'] . "\n{\n}\n\n";
+            $prologue = 'class ' . $generatedMockClassName['originalClassName'] . "\n{\n}\n\n";
 
-            if (!empty($mockClassName['namespaceName'])) {
-                $prologue = 'namespace ' . $mockClassName['namespaceName'] .
+            if (!empty($generatedMockClassName['namespaceName'])) {
+                $prologue = 'namespace ' . $generatedMockClassName['namespaceName'] .
                             " {\n\n" . $prologue . "}\n\n" .
                             "namespace {\n\n";
 
@@ -734,7 +734,7 @@ final class Generator
             $mockedCloneMethod = true;
         } else {
             try {
-                $class = new \ReflectionClass($mockClassName['fullClassName']);
+                $class = new \ReflectionClass($generatedMockClassName['fullClassName']);
                 // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
                 throw new RuntimeException(
@@ -749,7 +749,7 @@ final class Generator
                 throw new RuntimeException(
                     \sprintf(
                         'Class "%s" is declared "final" and cannot be mocked.',
-                        $mockClassName['fullClassName']
+                        $generatedMockClassName['fullClassName']
                     )
                 );
             }
@@ -772,7 +772,7 @@ final class Generator
                 }
                 // @codeCoverageIgnoreEnd
 
-                foreach ($this->userDefinedInterfaceMethods($mockClassName['fullClassName']) as $method) {
+                foreach ($this->userDefinedInterfaceMethods($generatedMockClassName['fullClassName']) as $method) {
                     $methodName = $method->getName();
 
                     if ($class->hasMethod($methodName)) {
@@ -798,9 +798,9 @@ final class Generator
                     );
                 }
 
-                $mockClassName = $this->generateClassName(
+                $generatedMockClassName = $this->generateClassName(
                     $actualClassName,
-                    $mockClassName['className'],
+                    $generatedMockClassName['className'],
                     'Mock_'
                 );
             }
@@ -843,13 +843,13 @@ final class Generator
 
         if ($isClass && $explicitMethods === []) {
             $mockMethods->addMethods(
-                ...$this->mockClassMethods($mockClassName['fullClassName'], $callOriginalMethods, $cloneArguments)
+                ...$this->mockClassMethods($generatedMockClassName['fullClassName'], $callOriginalMethods, $cloneArguments)
             );
         }
 
         if ($isInterface && ($explicitMethods === [] || $explicitMethods === null)) {
             $mockMethods->addMethods(
-                ...$this->mockInterfaceMethods($mockClassName['fullClassName'], $cloneArguments)
+                ...$this->mockInterfaceMethods($generatedMockClassName['fullClassName'], $cloneArguments)
             );
         }
 
@@ -876,7 +876,7 @@ final class Generator
                 } else {
                     $mockMethods->addMethods(
                         MockMethod::fromName(
-                            $mockClassName['fullClassName'],
+                            $generatedMockClassName['fullClassName'],
                             $methodName,
                             $cloneArguments
                         )
@@ -914,12 +914,12 @@ final class Generator
                 'prologue'          => $prologue ?? '',
                 'epilogue'          => $epilogue ?? '',
                 'class_declaration' => $this->generateMockClassDeclaration(
-                    $mockClassName,
+                    $generatedMockClassName,
                     $isInterface,
                     $additionalInterfaces
                 ),
                 'clone'           => $cloneTrait,
-                'mock_class_name' => $mockClassName['className'],
+                'mock_class_name' => $generatedMockClassName['className'],
                 'mocked_methods'  => $mockedMethods,
                 'method'          => $method,
             ]
@@ -927,7 +927,7 @@ final class Generator
 
         return new MockClass(
             $classTemplate->render(),
-            $mockClassName['className'],
+            $generatedMockClassName['className'],
             $configurable
         );
     }

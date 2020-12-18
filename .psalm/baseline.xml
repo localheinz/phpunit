@@ -52,8 +52,12 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/Event/Facade.php">
-    <MissingThrowsDocblock occurrences="1">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$eventClass . 'Subscriber'</code>
+    </ArgumentTypeCoercion>
+    <MissingThrowsDocblock occurrences="2">
       <code>addMapping</code>
+      <code>register</code>
     </MissingThrowsDocblock>
   </file>
   <file src="src/Framework/Assert.php">

@@ -29,6 +29,7 @@ return PhpCsFixer\Config::create()
     ->setRules([
         'align_multiline_comment' => true,
         'array_indentation' => true,
+        'array_push' => true,
         'array_syntax' => ['syntax' => 'short'],
         'binary_operator_spaces' => [
             'operators' => [

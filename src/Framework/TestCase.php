@@ -1665,7 +1665,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Skipped()
+        ));
     }
 
     private function markSkippedForMissingDependency(Event\Dispatcher $dispatcher, ExecutionOrderDependency $dependency): void
@@ -1689,7 +1692,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Skipped()
+        ));
     }
 
     private function markWarningForUncallableDependency(Event\Dispatcher $dispatcher, ExecutionOrderDependency $dependency): void
@@ -1713,7 +1719,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->result->endTest($this, 0);
 
-        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+        $dispatcher->dispatch(new Event\Test\AfterTest(
+            new Event\Test\Test(),
+            new Event\Test\Result\Warning()
+        ));
     }
 
     /**

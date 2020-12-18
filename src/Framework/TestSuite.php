@@ -440,7 +440,10 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                     $result->addFailure($test, $error, 0);
                     $result->endTest($test, 0);
 
-                    $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+                    $dispatcher->dispatch(new Event\Test\AfterTest(
+                        new Event\Test\Test(),
+                        new Event\Test\Result\Failure()
+                    ));
                 }
 
                 $dispatcher->dispatch(new Event\TestSuite\AfterTestSuite(new Event\TestSuite\TestSuite()));
@@ -474,7 +477,10 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
                     $result->endTest($test, 0);
 
-                    $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+                    $dispatcher->dispatch(new Event\Test\AfterTest(
+                        new Event\Test\Test(),
+                        new Event\Test\Result\Error()
+                    ));
                 }
 
                 $dispatcher->dispatch(new Event\TestSuite\AfterTestSuite(new Event\TestSuite\TestSuite()));
@@ -518,7 +524,10 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                         $result->addFailure($placeholderTest, $error, 0);
                         $result->endTest($placeholderTest, 0);
 
-                        $dispatcher->dispatch(new Event\Test\AfterTest(new Event\Test\Test()));
+                        $dispatcher->dispatch(new Event\Test\AfterTest(
+                            new Event\Test\Test(),
+                            new Event\Test\Result\Failure()
+                        ));
                     }
                 }
             }

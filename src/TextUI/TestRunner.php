@@ -618,7 +618,11 @@ final class TestRunner
             $this->write(PHP_EOL);
         }
 
+        $this->eventEmitter->testRunStarted();
+
         $suite->run($result);
+
+        $this->eventEmitter->testRunFinished();
 
         foreach ($this->extensions as $extension) {
             if ($extension instanceof AfterLastTestHook) {

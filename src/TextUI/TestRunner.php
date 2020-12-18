@@ -90,8 +90,6 @@ final class TestRunner
 
     private static bool $versionStringPrinted = false;
 
-    private Event\Emitter $eventEmitter;
-
     private ?CodeCoverageFilter $codeCoverageFilter = null;
 
     private ?ResultPrinter $printer = null;
@@ -105,10 +103,8 @@ final class TestRunner
 
     private Timer $timer;
 
-    public function __construct(Event\Emitter $eventEmitter, CodeCoverageFilter $filter = null)
+    public function __construct(CodeCoverageFilter $filter = null)
     {
-        $this->eventEmitter = $eventEmitter;
-
         if ($filter === null) {
             $filter = new CodeCoverageFilter;
         }
@@ -183,7 +179,7 @@ final class TestRunner
 
             $sorter->reorderTestsInSuite($suite, $arguments['executionOrder'], $arguments['resolveDependencies'], $arguments['executionOrderDefects']);
 
-            $this->eventEmitter->testSuiteSorted();
+            Event\Registry::emitter()->testSuiteSorted();
 
             $originalExecutionOrder = $sorter->getOriginalExecutionOrder();
 
@@ -618,11 +614,11 @@ final class TestRunner
             $this->write(PHP_EOL);
         }
 
-        $this->eventEmitter->testRunStarted();
+        Event\Registry::emitter()->testRunStarted();
 
         $suite->run($result);
 
-        $this->eventEmitter->testRunFinished();
+        Event\Registry::emitter()->testRunFinished();
 
         foreach ($this->extensions as $extension) {
             if ($extension instanceof AfterLastTestHook) {

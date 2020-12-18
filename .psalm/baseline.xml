@@ -51,15 +51,6 @@
       <code>dispatch</code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Event/Facade.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$eventClass . 'Subscriber'</code>
-    </ArgumentTypeCoercion>
-    <MissingThrowsDocblock occurrences="2">
-      <code>addMapping</code>
-      <code>register</code>
-    </MissingThrowsDocblock>
-  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>
@@ -951,7 +942,7 @@
       <code>include_once $filename</code>
     </UnresolvableInclude>
     <UnsafeInstantiation occurrences="1">
-      <code>new static((new Event\Facade())-&gt;emitter())</code>
+      <code>new static</code>
     </UnsafeInstantiation>
   </file>
   <file src="src/TextUI/DefaultResultPrinter.php">

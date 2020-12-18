@@ -1813,6 +1813,8 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         $this->snapshot = null;
 
         if (isset($rte)) {
+            Event\Registry::emitter()->globalStateModified();
+
             throw $rte;
         }
     }

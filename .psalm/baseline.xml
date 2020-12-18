@@ -56,12 +56,6 @@
       <code>addMapping</code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Event/Telemetric/SysInfo.php">
-    <InvalidClass occurrences="1">
-      <code>SnapShot</code>
-    </InvalidClass>
-    <TooManyArguments occurrences="1"/>
-  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>

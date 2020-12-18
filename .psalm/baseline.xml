@@ -50,11 +50,55 @@
       <code>dispatch</code>
       <code>dispatch</code>
     </MissingThrowsDocblock>
+    <TooManyArguments occurrences="39">
+      <code>new Application\Configured($this-&gt;getTelemetryInfo())</code>
+      <code>new Application\Started($this-&gt;getTelemetryInfo())</code>
+      <code>new Assertion\Made($this-&gt;getTelemetryInfo())</code>
+      <code>new Bootstrap\Finished($this-&gt;getTelemetryInfo())</code>
+      <code>new Comparator\Registered($this-&gt;getTelemetryInfo())</code>
+      <code>new Extension\Loaded($this-&gt;getTelemetryInfo())</code>
+      <code>new GlobalState\Captured($this-&gt;getTelemetryInfo())</code>
+      <code>new GlobalState\Modified($this-&gt;getTelemetryInfo())</code>
+      <code>new GlobalState\Restored($this-&gt;getTelemetryInfo())</code>
+      <code>new TestCase\AfterClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestCase\BeforeClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestCase\SetUpBeforeClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestCase\SetUpFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestCase\TearDownAfterClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestDouble\MockCreated($this-&gt;getTelemetryInfo())</code>
+      <code>new TestDouble\MockForTraitCreated($this-&gt;getTelemetryInfo())</code>
+      <code>new TestDouble\PartialMockCreated($this-&gt;getTelemetryInfo())</code>
+      <code>new TestDouble\ProphecyCreated($this-&gt;getTelemetryInfo())</code>
+      <code>new TestDouble\TestProxyCreated($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\AfterClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\BeforeClassFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\Configured($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\Loaded($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\RunFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\RunStarted($this-&gt;getTelemetryInfo())</code>
+      <code>new TestSuite\Sorted($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunConfigured($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunErrored($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunFailed($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunPassed($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunRisky($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunSkippedByDataProvider($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunSkippedIncomplete($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunSkippedWithFailedRequirements($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunSkippedWithWarning($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\RunStarted($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\SetUpFinished($this-&gt;getTelemetryInfo())</code>
+      <code>new Test\TearDownFinished($this-&gt;getTelemetryInfo())</code>
+    </TooManyArguments>
   </file>
   <file src="src/Event/Facade.php">
     <MissingThrowsDocblock occurrences="1">
       <code>addMapping</code>
     </MissingThrowsDocblock>
+    <TooFewArguments occurrences="1">
+      <code>new Emitter(new Dispatcher($this-&gt;typeMap()))</code>
+    </TooFewArguments>
   </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">

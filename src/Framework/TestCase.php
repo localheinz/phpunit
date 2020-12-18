@@ -56,6 +56,7 @@ use function sprintf;
 use function strpos;
 use function substr;
 use DeepCopy\DeepCopy;
+use PHPUnit\Event;
 use PHPUnit\Framework\Constraint\Exception as ExceptionConstraint;
 use PHPUnit\Framework\Constraint\ExceptionCode;
 use PHPUnit\Framework\Constraint\ExceptionMessage;
@@ -1293,7 +1294,11 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     protected function createMock(string $originalClassName): MockObject
     {
-        return $this->createMockObject($originalClassName);
+        $mock = $this->createMockObject($originalClassName);
+
+        Event\Registry::emitter()->testDoubleMockCreated();
+
+        return $mock;
     }
 
     /**

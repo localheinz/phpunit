@@ -57,21 +57,10 @@
     </MissingThrowsDocblock>
   </file>
   <file src="src/Event/Telemetric/SysInfo.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>$clock</code>
-      <code>$memInfo</code>
-    </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="9">
-      <code>$this-&gt;clock</code>
-      <code>$this-&gt;memInfo</code>
-      <code>$this-&gt;memInfo</code>
-      <code>Clock</code>
-      <code>Clock</code>
-      <code>MemInfo</code>
-      <code>MemInfo</code>
+    <InvalidClass occurrences="1">
       <code>SnapShot</code>
-      <code>Snapshot</code>
-    </UndefinedClass>
+    </InvalidClass>
+    <TooManyArguments occurrences="1"/>
   </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">

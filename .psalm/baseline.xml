@@ -9,7 +9,7 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Event/DispatchingEmitter.php">
-    <MissingThrowsDocblock occurrences="39">
+    <MissingThrowsDocblock occurrences="41">
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
@@ -49,16 +49,8 @@
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
-    </MissingThrowsDocblock>
-  </file>
-  <file src="src/Event/Registry.php">
-    <UndefinedClass occurrences="1">
-      <code>SystemClock</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Event/Telemetry/HRTime.php">
-    <MissingThrowsDocblock occurrences="1">
-      <code>new Duration($secondDuration, $nanoDuration)</code>
+      <code>duration</code>
+      <code>duration</code>
     </MissingThrowsDocblock>
   </file>
   <file src="src/Event/Telemetry/SystemStopWatch.php">

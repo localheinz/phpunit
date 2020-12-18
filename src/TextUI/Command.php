@@ -143,6 +143,8 @@ class Command
             return $this->handleListTestsXml($suite, $this->arguments['listTestsXml'], $exit);
         }
 
+        $this->eventEmitter->applicationConfigured();
+
         unset($this->arguments['test'], $this->arguments['testFile']);
 
         try {
@@ -343,7 +345,7 @@ class Command
             }
 
             if (!isset($this->arguments['noExtensions']) && $phpunitConfiguration->hasExtensionsDirectory() && extension_loaded('phar')) {
-                $result = (new PharLoader)->loadPharExtensionsInDirectory($phpunitConfiguration->extensionsDirectory());
+                $result = (new PharLoader($this->eventEmitter))->loadPharExtensionsInDirectory($phpunitConfiguration->extensionsDirectory());
 
                 $this->arguments['loadedExtensions']    = $result['loadedExtensions'];
                 $this->arguments['notLoadedExtensions'] = $result['notLoadedExtensions'];
@@ -505,6 +507,8 @@ class Command
                 )
             );
         }
+
+        $this->eventEmitter->bootstrapFinished();
     }
 
     protected function handleVersionCheck(): void

@@ -508,6 +508,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             }
         }
 
+        Event\Registry::emitter()->testSuiteAfterClassFinished();
+
         $result->endTestSuite($this);
     }
 

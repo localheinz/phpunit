@@ -28,6 +28,7 @@ use function strpos;
 use function substr;
 use Iterator;
 use IteratorAggregate;
+use PHPUnit\Event;
 use PHPUnit\Runner\Filter\Factory;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Util\Test as TestUtil;
@@ -429,6 +430,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                         call_user_func([$this->name, $beforeClassMethod]);
                     }
                 }
+
+                Event\Registry::emitter()->testSuiteBeforeClassFinished();
             } catch (SkippedTestSuiteError $error) {
                 foreach ($this->tests() as $test) {
                     $result->startTest($test);

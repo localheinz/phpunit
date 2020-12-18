@@ -56,6 +56,23 @@
       <code>addMapping</code>
     </MissingThrowsDocblock>
   </file>
+  <file src="src/Event/Telemetric/SysInfo.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>$clock</code>
+      <code>$memInfo</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="9">
+      <code>$this-&gt;clock</code>
+      <code>$this-&gt;memInfo</code>
+      <code>$this-&gt;memInfo</code>
+      <code>Clock</code>
+      <code>Clock</code>
+      <code>MemInfo</code>
+      <code>MemInfo</code>
+      <code>SnapShot</code>
+      <code>Snapshot</code>
+    </UndefinedClass>
+  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>

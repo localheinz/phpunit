@@ -8,7 +8,7 @@
       <code>notify</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Event/Emitter.php">
+  <file src="src/Event/DispatchingEmitter.php">
     <MissingThrowsDocblock occurrences="39">
       <code>dispatch</code>
       <code>dispatch</code>

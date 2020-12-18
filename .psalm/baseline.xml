@@ -50,47 +50,6 @@
       <code>dispatch</code>
       <code>dispatch</code>
     </MissingThrowsDocblock>
-    <TooManyArguments occurrences="39">
-      <code>new Application\Configured($this-&gt;telemetryInfo())</code>
-      <code>new Application\Started($this-&gt;telemetryInfo())</code>
-      <code>new Assertion\Made($this-&gt;telemetryInfo())</code>
-      <code>new Bootstrap\Finished($this-&gt;telemetryInfo())</code>
-      <code>new Comparator\Registered($this-&gt;telemetryInfo())</code>
-      <code>new Extension\Loaded($this-&gt;telemetryInfo())</code>
-      <code>new GlobalState\Captured($this-&gt;telemetryInfo())</code>
-      <code>new GlobalState\Modified($this-&gt;telemetryInfo())</code>
-      <code>new GlobalState\Restored($this-&gt;telemetryInfo())</code>
-      <code>new TestCase\AfterClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestCase\BeforeClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestCase\SetUpBeforeClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestCase\SetUpFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestCase\TearDownAfterClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestDouble\MockCreated($this-&gt;telemetryInfo())</code>
-      <code>new TestDouble\MockForTraitCreated($this-&gt;telemetryInfo())</code>
-      <code>new TestDouble\PartialMockCreated($this-&gt;telemetryInfo())</code>
-      <code>new TestDouble\ProphecyCreated($this-&gt;telemetryInfo())</code>
-      <code>new TestDouble\TestProxyCreated($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\AfterClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\BeforeClassFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\Configured($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\Loaded($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\RunFinished($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\RunStarted($this-&gt;telemetryInfo())</code>
-      <code>new TestSuite\Sorted($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunConfigured($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunErrored($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunFailed($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunFinished($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunPassed($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunRisky($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunSkippedByDataProvider($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunSkippedIncomplete($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunSkippedWithFailedRequirements($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunSkippedWithWarning($this-&gt;telemetryInfo())</code>
-      <code>new Test\RunStarted($this-&gt;telemetryInfo())</code>
-      <code>new Test\SetUpFinished($this-&gt;telemetryInfo())</code>
-      <code>new Test\TearDownFinished($this-&gt;telemetryInfo())</code>
-    </TooManyArguments>
   </file>
   <file src="src/Event/Facade.php">
     <MissingThrowsDocblock occurrences="1">

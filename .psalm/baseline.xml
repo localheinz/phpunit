@@ -62,12 +62,6 @@
     </InvalidClass>
     <TooManyArguments occurrences="1"/>
   </file>
-  <file src="src/Event/Telemetric/SystemMemoryMeter.php">
-    <MissingThrowsDocblock occurrences="2">
-      <code>MemoryUsage::fromBytes(memory_get_peak_usage(true))</code>
-      <code>MemoryUsage::fromBytes(memory_get_usage(true))</code>
-    </MissingThrowsDocblock>
-  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>

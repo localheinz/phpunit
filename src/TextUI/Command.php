@@ -116,7 +116,7 @@ class Command
 
         $this->handleArguments($argv);
 
-        $runner = new TestRunner;
+        $runner = new TestRunner($this->eventEmitter);
 
         if ($this->arguments['test'] instanceof TestSuite) {
             $suite = $this->arguments['test'];

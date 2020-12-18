@@ -1461,8 +1461,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->registerMockObject($mockObject);
 
-        Event\Registry::emitter()->testDoubleMockForTraitCreated();
-
         return $mockObject;
     }
 
@@ -1489,6 +1487,8 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         $this->registerMockObject($mockObject);
+
+        Event\Registry::emitter()->testDoubleMockForTraitCreated();
 
         return $mockObject;
     }

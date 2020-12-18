@@ -33,6 +33,7 @@ use function strpos;
 use ArrayAccess;
 use Countable;
 use Generator;
+use PHPUnit\Event;
 use PHPUnit\Framework\Constraint\ArrayHasKey;
 use PHPUnit\Framework\Constraint\Callback;
 use PHPUnit\Framework\Constraint\ClassHasAttribute;
@@ -2078,7 +2079,11 @@ abstract class Assert
     {
         self::$count += count($constraint);
 
-        $constraint->evaluate($value, $message);
+        try {
+            $constraint->evaluate($value, $message);
+        } finally {
+            Event\Registry::emitter()->assertionMade();
+        }
     }
 
     /**

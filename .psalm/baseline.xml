@@ -5,6 +5,31 @@
       <code>notify</code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="src/Event/Emitter.php">
+    <MissingParamType occurrences="1">
+      <code>$payload</code>
+    </MissingParamType>
+    <MissingThrowsDocblock occurrences="1">
+      <code>dispatch</code>
+    </MissingThrowsDocblock>
+    <UndefinedClass occurrences="1">
+      <code>FooEvent</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Event/Facade.php">
+    <MissingThrowsDocblock occurrences="10">
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+      <code>addMapping</code>
+    </MissingThrowsDocblock>
+  </file>
   <file src="src/Framework/Assert.php">
     <DeprecatedClass occurrences="12">
       <code>ClassHasAttribute</code>
@@ -666,7 +691,15 @@
       <code>result</code>
       <code>runTest</code>
     </MissingReturnType>
-    <MissingThrowsDocblock occurrences="15">
+    <MissingThrowsDocblock occurrences="23">
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
       <code>endTest</code>
       <code>endTest</code>
       <code>endTest</code>
@@ -728,7 +761,12 @@
       <code>is_string($testClass)</code>
       <code>is_string($testClass) &amp;&amp; class_exists($testClass)</code>
     </DocblockTypeContradiction>
-    <MissingThrowsDocblock occurrences="1"/>
+    <MissingThrowsDocblock occurrences="5">
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+    </MissingThrowsDocblock>
     <PossiblyNullArgument occurrences="3">
       <code>$this-&gt;backupGlobals</code>
       <code>$this-&gt;backupStaticAttributes</code>
@@ -809,9 +847,13 @@
       <code>RawCodeCoverageData::fromXdebugWithoutPathCoverage([])</code>
       <code>RawCodeCoverageData::fromXdebugWithoutPathCoverage([])</code>
     </InternalMethod>
-    <MissingThrowsDocblock occurrences="4">
+    <MissingThrowsDocblock occurrences="8">
       <code>append</code>
       <code>cacheDirectory</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
       <code>stop</code>
     </MissingThrowsDocblock>
     <PossiblyInvalidArgument occurrences="1">
@@ -863,7 +905,7 @@
     <LessSpecificReturnStatement occurrences="1">
       <code>$class-&gt;newInstance($outputStream)</code>
     </LessSpecificReturnStatement>
-    <MissingThrowsDocblock occurrences="22">
+    <MissingThrowsDocblock occurrences="25">
       <code>addTestFile</code>
       <code>addTestFiles</code>
       <code>argument</code>
@@ -872,6 +914,9 @@
       <code>bootstrap</code>
       <code>cacheDirectory</code>
       <code>defaultTestSuite</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
       <code>extensionsDirectory</code>
       <code>handleListSuites</code>
       <code>handleListTests</code>
@@ -892,6 +937,9 @@
     <RedundantCondition occurrences="1">
       <code>assert(isset($arguments) &amp;&amp; $arguments instanceof Configuration)</code>
     </RedundantCondition>
+    <TooFewArguments occurrences="1">
+      <code>new Event\Dispatcher()</code>
+    </TooFewArguments>
     <UnresolvableInclude occurrences="1">
       <code>include_once $filename</code>
     </UnresolvableInclude>
@@ -944,13 +992,15 @@
       <code>$e</code>
     </InvalidArgument>
     <InvalidStringClass occurrences="1"/>
-    <MissingThrowsDocblock occurrences="11">
+    <MissingThrowsDocblock occurrences="13">
       <code>addFilter</code>
       <code>addFilter</code>
       <code>addFilter</code>
       <code>addFilter</code>
       <code>addFilter</code>
       <code>detect</code>
+      <code>dispatch</code>
+      <code>dispatch</code>
       <code>new Printer($arguments['coverageText'])</code>
       <code>reorderTestsInSuite</code>
       <code>run</code>

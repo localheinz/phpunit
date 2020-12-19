@@ -18,7 +18,6 @@ use PHPUnit\Util\Filter;
 use PHPUnit\Util\InvalidDataSetException;
 use PHPUnit\Util\Test as TestUtil;
 use ReflectionClass;
-use SebastianBergmann\CodeUnit;
 use Throwable;
 
 /**
@@ -85,7 +84,7 @@ final class TestBuilder
             );
 
             Event\Registry::emitter()->testSkippedByDataProvider(
-                CodeUnit\ClassMethodUnit::forClassMethod(
+                new Event\Code\ClassMethod(
                     $className,
                     $methodName
                 ),

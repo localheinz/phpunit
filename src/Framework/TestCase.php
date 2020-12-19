@@ -89,7 +89,6 @@ use PHPUnit\Util\Test as TestUtil;
 use PHPUnit\Util\Type;
 use ReflectionClass;
 use ReflectionException;
-use SebastianBergmann\CodeUnit;
 use SebastianBergmann\Comparator\Comparator;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 use SebastianBergmann\Diff\Differ;
@@ -737,7 +736,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
                 foreach ($hookMethods['beforeClass'] as $method) {
                     $this->{$method}();
 
-                    $methodCalledBeforeFirstTest = CodeUnit\ClassMethodUnit::forClassMethod(
+                    $methodCalledBeforeFirstTest = new Event\Code\ClassMethod(
                         static::class,
                         $method
                     );
@@ -763,7 +762,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             foreach ($hookMethods['before'] as $method) {
                 $this->{$method}();
 
-                $methodCallBeforeTest = CodeUnit\ClassMethodUnit::forClassMethod(
+                $methodCallBeforeTest = new Event\Code\ClassMethod(
                     static::class,
                     $method
                 );
@@ -788,7 +787,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             foreach ($hookMethods['preCondition'] as $method) {
                 $this->{$method}();
 
-                $methodCalledPreCondition = CodeUnit\ClassMethodUnit::forClassMethod(
+                $methodCalledPreCondition = new Event\Code\ClassMethod(
                     static::class,
                     $method
                 );
@@ -807,7 +806,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             );
 
             if (method_exists($this, $this->name)) {
-                Event\Registry::emitter()->testPrepared(CodeUnit\ClassMethodUnit::forClassMethod(
+                Event\Registry::emitter()->testPrepared(new Event\Code\ClassMethod(
                     static::class,
                     $this->name
                 ));
@@ -835,7 +834,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
             if (method_exists($this, $this->name)) {
                 Event\Registry::emitter()->testAbortedWithMessage(
-                    CodeUnit\ClassMethodUnit::forClassMethod(
+                    new Event\Code\ClassMethod(
                         static::class,
                         $this->name
                     ),
@@ -1665,7 +1664,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         if (!empty($missingRequirements)) {
             Event\Registry::emitter()->testSkippedDueToUnsatisfiedRequirements(
-                CodeUnit\ClassMethodUnit::forClassMethod(
+                new Event\Code\ClassMethod(
                     static::class,
                     $this->name
                 ),

@@ -1646,9 +1646,9 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         if (!empty($missingRequirements)) {
             Event\Registry::emitter()->testSkippedDueToUnsatisfiedRequirements(
-                get_class($this),
+                static::class,
                 CodeUnit\ClassMethodUnit::forClassMethod(
-                    get_class($this),
+                    static::class,
                     $this->name
                 ),
                 ...$missingRequirements

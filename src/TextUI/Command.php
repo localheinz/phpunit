@@ -105,7 +105,7 @@ class Command
      */
     public function run(array $argv, bool $exit = true): int
     {
-        Event\Registry::emitter()->applicationStarted();
+        Event\Registry::emitter()->testRunnerStarted();
 
         $this->handleArguments($argv);
 

@@ -1645,6 +1645,8 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         if (!empty($missingRequirements)) {
+            Event\Registry::emitter()->testSkippedDueToUnsatisfiedRequirements();
+
             $this->markTestSkipped(implode(PHP_EOL, $missingRequirements));
         }
     }

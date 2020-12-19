@@ -179,7 +179,11 @@ final class TestRunner
 
             $sorter->reorderTestsInSuite($suite, $arguments['executionOrder'], $arguments['resolveDependencies'], $arguments['executionOrderDefects']);
 
-            Event\Registry::emitter()->testSuiteSorted();
+            Event\Registry::emitter()->testSuiteSorted(
+                $arguments['executionOrder'],
+                $arguments['executionOrderDefects'],
+                $arguments['resolveDependencies']
+            );
 
             $originalExecutionOrder = $sorter->getOriginalExecutionOrder();
 

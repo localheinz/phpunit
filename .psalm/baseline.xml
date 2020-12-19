@@ -9,7 +9,11 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Event/DispatchingEmitter.php">
-    <MissingThrowsDocblock occurrences="45">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$testClassName</code>
+    </ArgumentTypeCoercion>
+    <MissingThrowsDocblock occurrences="46">
+      <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>

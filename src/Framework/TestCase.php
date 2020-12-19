@@ -735,7 +735,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
                     $this->{$method}();
                 }
 
-                Event\Registry::emitter()->testCaseBeforeClassCalled();
+                Event\Registry::emitter()->testBeforeFirstTestMethodCalled();
             }
 
             $this->setDoesNotPerformAssertionsFromAnnotation();

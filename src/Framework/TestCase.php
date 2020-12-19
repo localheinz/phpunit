@@ -1364,7 +1364,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             ->enableProxyingToOriginalMethods()
             ->getMock();
 
-        Event\Registry::emitter()->testDoubleTestProxyCreated();
+        Event\Registry::emitter()->testDoubleTestProxyCreated(
+            $originalClassName,
+            $constructorArguments
+        );
 
         return $testProxy;
     }

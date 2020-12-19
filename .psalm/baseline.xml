@@ -9,7 +9,8 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Event/DispatchingEmitter.php">
-    <MissingThrowsDocblock occurrences="43">
+    <MissingThrowsDocblock occurrences="44">
+      <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
@@ -691,7 +692,9 @@
     </MoreSpecificReturnType>
   </file>
   <file src="src/Framework/TestCase.php">
-    <ArgumentTypeCoercion occurrences="2">
+    <ArgumentTypeCoercion occurrences="4">
+      <code>$mockClassName</code>
+      <code>$originalClassName</code>
       <code>$this-&gt;expectedException</code>
       <code>$this-&gt;size()</code>
     </ArgumentTypeCoercion>

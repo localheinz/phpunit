@@ -1342,7 +1342,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             ->onlyMethods($methods)
             ->getMock();
 
-        Event\Registry::emitter()->testDoublePartialMockCreated();
+        Event\Registry::emitter()->testDoublePartialMockCreated(
+            $originalClassName,
+            ...$methods
+        );
 
         return $partialMock;
     }

@@ -720,7 +720,7 @@
       <code>result</code>
       <code>runTest</code>
     </MissingReturnType>
-    <MissingThrowsDocblock occurrences="15">
+    <MissingThrowsDocblock occurrences="16">
       <code>endTest</code>
       <code>endTest</code>
       <code>endTest</code>

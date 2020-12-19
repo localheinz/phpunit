@@ -13,7 +13,8 @@
       <code>$mockClassName</code>
       <code>$originalClassName</code>
     </ArgumentTypeCoercion>
-    <MissingThrowsDocblock occurrences="44">
+    <MissingThrowsDocblock occurrences="45">
+      <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>

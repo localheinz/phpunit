@@ -152,6 +152,8 @@ class Command
             $return = TestRunner::EXCEPTION_EXIT;
         }
 
+        Event\Facade::emitter()->testRunnerFinished();
+
         if ($exit) {
             exit($return);
         }

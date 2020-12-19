@@ -18,6 +18,7 @@ use PHPUnit\Util\Filter;
 use PHPUnit\Util\InvalidDataSetException;
 use PHPUnit\Util\Test as TestUtil;
 use ReflectionClass;
+use SebastianBergmann\CodeUnit;
 use Throwable;
 
 /**
@@ -83,7 +84,13 @@ final class TestBuilder
                 )
             );
 
-            Event\Registry::emitter()->testSkippedByDataProvider();
+            Event\Registry::emitter()->testSkippedByDataProvider(
+                CodeUnit\ClassMethodUnit::forClassMethod(
+                    $className,
+                    $methodName
+                ),
+                $data->getMessage()
+            );
         } catch (Throwable $t) {
             $data = new ErrorTestCase(
                 sprintf(

@@ -618,7 +618,7 @@ final class TestRunner
             $this->write(PHP_EOL);
         }
 
-        Event\Registry::emitter()->testSuiteRunStarted();
+        Event\Registry::emitter()->testSuiteStarted();
 
         $suite->run($result);
 

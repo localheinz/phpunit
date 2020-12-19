@@ -806,6 +806,8 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
                 ...$methodsCalledPreCondition
             );
 
+            Event\Registry::emitter()->testPrepared();
+
             $this->testResult = $this->runTest();
             $this->verifyMockObjects();
 

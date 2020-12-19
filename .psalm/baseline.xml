@@ -709,9 +709,6 @@
       <code>MockObject&amp;RealInstanceType</code>
       <code>class-string&lt;MockObject&amp;RealInstanceType&gt;</code>
     </InvalidReturnType>
-    <InvalidScalarArgument occurrences="1">
-      <code>$originalClassName</code>
-    </InvalidScalarArgument>
     <MissingParamType occurrences="5">
       <code>$args</code>
       <code>$args</code>

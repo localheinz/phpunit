@@ -421,7 +421,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
         $emitter = Event\Facade::emitter();
 
-        $methodsCalledBeforeClass = [];
+        $methodsCalledBeforeFirstTest = [];
 
         if ($this->testCase && class_exists($this->name, false)) {
             try {
@@ -433,17 +433,17 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
                         call_user_func([$this->name, $beforeClassMethod]);
 
-                        $methodCalledBeforeClass = new Event\Code\ClassMethod(
+                        $methodCalledBeforeFirstTest = new Event\Code\ClassMethod(
                             $this->name,
                             $beforeClassMethod
                         );
 
-                        $emitter->testSuiteBeforeClassCalled(
+                        $emitter->testBeforeFirstTestMethodCalled(
                             $this->name,
-                            $methodCalledBeforeClass
+                            $methodCalledBeforeFirstTest
                         );
 
-                        $methodsCalledBeforeClass[] = $methodCalledBeforeClass;
+                        $methodsCalledBeforeFirstTest[] = $methodCalledBeforeFirstTest;
                     }
                 }
             } catch (SkippedTestSuiteError $error) {
@@ -487,9 +487,9 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             }
         }
 
-        $emitter->testSuiteBeforeClassFinished(
+        $emitter->testBeforeFirstTestMethodFinished(
             $this->name,
-            ...$methodsCalledBeforeClass
+            ...$methodsCalledBeforeFirstTest
         );
 
         foreach ($this as $test) {
@@ -507,7 +507,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             $test->run($result);
         }
 
-        $methodsCalledAfterClass = [];
+        $methodsCalledAfterLastTest = [];
 
         if ($this->testCase && class_exists($this->name, false)) {
             foreach ($hookMethods['afterClass'] as $afterClassMethod) {
@@ -515,17 +515,17 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                     try {
                         call_user_func([$this->name, $afterClassMethod]);
 
-                        $methodCalledAfterClass = new Event\Code\ClassMethod(
+                        $methodCalledAfterLastTest = new Event\Code\ClassMethod(
                             $this->name,
                             $afterClassMethod
                         );
 
-                        $emitter->testSuiteAfterClassCalled(
+                        $emitter->testAfterLastTestMethodCalled(
                             $this->name,
-                            $methodCalledAfterClass
+                            $methodCalledAfterLastTest
                         );
 
-                        $methodsCalledAfterClass[] = $methodCalledAfterClass;
+                        $methodsCalledAfterLastTest[] = $methodCalledAfterLastTest;
                     } catch (Throwable $t) {
                         $message = "Exception in {$this->name}::{$afterClassMethod}" . PHP_EOL . $t->getMessage();
                         $error   = new SyntheticError($message, 0, $t->getFile(), $t->getLine(), $t->getTrace());
@@ -541,9 +541,9 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             }
         }
 
-        $emitter->testSuiteAfterClassFinished(
+        $emitter->testAfterLastTestMethodFinished(
             $this->name,
-            ...$methodsCalledAfterClass
+            ...$methodsCalledAfterLastTest
         );
 
         $result->endTestSuite($this);

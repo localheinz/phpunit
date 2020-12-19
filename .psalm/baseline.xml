@@ -60,7 +60,7 @@
       <code>duration</code>
     </MissingThrowsDocblock>
   </file>
-  <file src="src/Event/Registry.php">
+  <file src="src/Event/Facade.php">
     <ArgumentTypeCoercion occurrences="1">
       <code>$eventClass . 'Subscriber'</code>
     </ArgumentTypeCoercion>

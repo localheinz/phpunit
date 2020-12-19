@@ -598,7 +598,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
     {
         ComparatorFactory::getInstance()->register($comparator);
 
-        Event\Registry::emitter()->comparatorRegistered(get_class($comparator));
+        Event\Facade::emitter()->comparatorRegistered(get_class($comparator));
 
         $this->customComparators[] = $comparator;
     }
@@ -726,7 +726,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $hasMetRequirements = false;
 
-        $emitter = Event\Registry::emitter();
+        $emitter = Event\Facade::emitter();
 
         try {
             $this->checkRequirements();
@@ -1458,7 +1458,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
     {
         $stub = $this->createMockObject($originalClassName);
 
-        Event\Registry::emitter()->testTestStubCreated($originalClassName);
+        Event\Facade::emitter()->testTestStubCreated($originalClassName);
 
         return $stub;
     }
@@ -1474,7 +1474,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
     {
         $mock = $this->createMockObject($originalClassName);
 
-        Event\Registry::emitter()->testMockObjectCreated($originalClassName);
+        Event\Facade::emitter()->testMockObjectCreated($originalClassName);
 
         return $mock;
     }
@@ -1516,7 +1516,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             ->onlyMethods($methods)
             ->getMock();
 
-        Event\Registry::emitter()->testPartialMockObjectCreated(
+        Event\Facade::emitter()->testPartialMockObjectCreated(
             $originalClassName,
             ...$methods
         );
@@ -1538,7 +1538,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             ->enableProxyingToOriginalMethods()
             ->getMock();
 
-        Event\Registry::emitter()->testTestProxyCreated(
+        Event\Facade::emitter()->testTestProxyCreated(
             $originalClassName,
             $constructorArguments
         );
@@ -1599,7 +1599,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->registerMockObject($mockObject);
 
-        Event\Registry::emitter()->testMockObjectCreatedForAbstractClass($originalClassName);
+        Event\Facade::emitter()->testMockObjectCreatedForAbstractClass($originalClassName);
 
         return $mockObject;
     }
@@ -1641,7 +1641,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             false
         );
 
-        Event\Registry::emitter()->testMockObjectCreatedFromWsdl(
+        Event\Facade::emitter()->testMockObjectCreatedFromWsdl(
             $wsdlFile,
             $originalClassName,
             $mockClassName,
@@ -1679,7 +1679,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $this->registerMockObject($mockObject);
 
-        Event\Registry::emitter()->testMockObjectCreatedForTrait($traitName);
+        Event\Facade::emitter()->testMockObjectCreatedForTrait($traitName);
 
         return $mockObject;
     }
@@ -1768,7 +1768,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         );
 
         if (!empty($missingRequirements)) {
-            Event\Registry::emitter()->testSkippedDueToUnsatisfiedRequirements(
+            Event\Facade::emitter()->testSkippedDueToUnsatisfiedRequirements(
                 new Event\Code\ClassMethod(
                     static::class,
                     $this->name
@@ -1977,7 +1977,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $snapshot = $this->createGlobalStateSnapshot($this->backupGlobals === true);
 
-        Event\Registry::emitter()->globalStateCaptured($snapshot);
+        Event\Facade::emitter()->globalStateCaptured($snapshot);
 
         $this->snapshot = $snapshot;
     }
@@ -2001,7 +2001,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
                     $snapshotAfter
                 );
             } catch (RiskyTestError $rte) {
-                Event\Registry::emitter()->globalStateModified(
+                Event\Facade::emitter()->globalStateModified(
                     $this->snapshot,
                     $snapshotAfter,
                     $rte->getMessage()
@@ -2014,7 +2014,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         if ($this->backupGlobals) {
             $restorer->restoreGlobalVariables($this->snapshot);
 
-            Event\Registry::emitter()->globalStateRestored($this->snapshot);
+            Event\Facade::emitter()->globalStateRestored($this->snapshot);
         }
 
         if ($this->backupStaticAttributes) {

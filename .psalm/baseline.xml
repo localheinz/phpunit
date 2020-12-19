@@ -791,6 +791,9 @@
     </PossiblyUndefinedVariable>
   </file>
   <file src="src/Framework/TestSuite.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;name</code>
+    </ArgumentTypeCoercion>
     <DocblockTypeContradiction occurrences="3">
       <code>!is_string($theClass) &amp;&amp; !$theClass instanceof ReflectionClass</code>
       <code>is_string($testClass)</code>

@@ -136,8 +136,6 @@ class Command
             return $this->handleListTestsXml($suite, $this->arguments['listTestsXml'], $exit);
         }
 
-        Event\Registry::emitter()->applicationConfigured();
-
         unset($this->arguments['test'], $this->arguments['testFile']);
 
         try {

@@ -58,6 +58,11 @@
       <code>duration</code>
     </MissingThrowsDocblock>
   </file>
+  <file src="src/Event/Registry.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$eventClass . 'Subscriber'</code>
+    </ArgumentTypeCoercion>
+  </file>
   <file src="src/Event/Telemetry/SystemStopWatch.php">
     <MissingThrowsDocblock occurrences="1">
       <code>new HRTime(...hrtime(false))</code>

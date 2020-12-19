@@ -13,6 +13,7 @@ use function assert;
 use function get_class;
 use function sprintf;
 use function trim;
+use PHPUnit\Event;
 use PHPUnit\Util\Filter;
 use PHPUnit\Util\InvalidDataSetException;
 use PHPUnit\Util\Test as TestUtil;
@@ -81,6 +82,8 @@ final class TestBuilder
                     $this->throwableToString($e)
                 )
             );
+
+            Event\Registry::emitter()->testSkippedByDataProvider();
         } catch (Throwable $t) {
             $data = new ErrorTestCase(
                 sprintf(

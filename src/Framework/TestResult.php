@@ -13,6 +13,7 @@ use function count;
 use function get_class;
 use Countable;
 use Error;
+use PHPUnit\Event;
 use PHPUnit\Util\Printer;
 use Throwable;
 
@@ -189,6 +190,15 @@ final class TestResult implements Countable
 
             if ($test instanceof TestCase) {
                 $test->markAsRisky();
+
+                Event\Facade::emitter()->testPassedButRisky(
+                    new Event\Code\Test(
+                        get_class($test),
+                        $test->getName(false),
+                        $test->getName(true),
+                    ),
+                    $e->getMessage()
+                );
             }
 
             if ($this->stopOnRisky || $this->stopOnDefect) {
